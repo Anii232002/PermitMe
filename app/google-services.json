@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "81427633346",
+    "firebase_url": "https://permitme-4b528-default-rtdb.firebaseio.com",
+    "project_id": "permitme-4b528",
+    "storage_bucket": "permitme-4b528.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81427633346:android:f609cec2e70dfff775175b",
+        "android_client_info": {
+          "package_name": "com.example.permitme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81427633346-90e7164g00vsseb3etb60rr5vs7m57dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ6rCv8X3j2R5PvxsvifZiai_UbHbiix4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81427633346-90e7164g00vsseb3etb60rr5vs7m57dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
