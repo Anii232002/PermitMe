@@ -1,4 +1,4 @@
-package com.example.permitme
+package com.example.permitme.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.example.permitme.DataClass.FacultyDataClass
+import com.example.permitme.R
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -74,7 +75,7 @@ class Faculty_Ad : Fragment() {
                             val fragment: Fragment = Faculty_Admin()
                             val fragmentManager = requireActivity().supportFragmentManager
                             val fragmentTransaction = fragmentManager.beginTransaction()
-                            fragmentTransaction.replace(com.example.permitme.R.id.faculty_add,fragment)
+                            fragmentTransaction.replace(R.id.faculty_add,fragment)
                             fragmentTransaction.addToBackStack(null)
                             fragmentTransaction.commit()
                         } else {

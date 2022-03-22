@@ -1,4 +1,4 @@
-package com.example.permitme
+package com.example.permitme.Fragment
 
 import android.app.ProgressDialog
 import android.os.Bundle
@@ -8,17 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.permitme.DataClass.AdminDataClass
+import com.example.permitme.R
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-import java.io.IOError
 
 class CreateAdmin : Fragment() {
     lateinit var create:Button

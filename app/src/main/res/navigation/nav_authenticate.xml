@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.permitme.HomeFragment"
+        android:name="com.example.permitme.Fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/createAdmin"
-        android:name="com.example.permitme.CreateAdmin"
+        android:name="com.example.permitme.Fragment.CreateAdmin"
         android:label="fragment_create_admin"
         tools:layout="@layout/fragment_create_admin" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminLogin"
-        android:name="com.example.permitme.AdminLogin"
+        android:name="com.example.permitme.Fragment.AdminLogin"
         android:label="fragment_admin_login"
         tools:layout="@layout/fragment_admin_login" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/userLogin"
-        android:name="com.example.permitme.UserLogin"
+        android:name="com.example.permitme.Fragment.UserLogin"
         android:label="fragment_user_login"
         tools:layout="@layout/fragment_user_login" >
         <action

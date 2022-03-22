@@ -1,4 +1,4 @@
-package com.example.permitme
+package com.example.permitme.Fragment
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.permitme.R
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -29,8 +30,8 @@ class UserLogin : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
+
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
