@@ -1,5 +1,6 @@
 package com.example.permitme.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,15 +10,19 @@ import android.widget.Button
 
 import androidx.navigation.fragment.findNavController
 import com.example.permitme.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class HomeFragment : Fragment() {
    lateinit var user : Button
     lateinit var admin : Button
+   lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mAuth=Firebase.auth
     }
 
     override fun onCreateView(
@@ -28,10 +33,19 @@ class HomeFragment : Fragment() {
        val v =inflater.inflate(R.layout.fragment_home, container, false)
         user = v.findViewById(R.id.user_home)
         admin = v.findViewById(R.id.admin_home)
+
+        val currentUser = mAuth.currentUser
+
+
         user.setOnClickListener(View.OnClickListener { view->
 
+            if(currentUser != null){
+                findNavController().navigate(R.id.action_homeFragment_to_userFragment)
 
-            findNavController().navigate(R.id.action_homeFragment_to_userLogin)
+            }
+            else {
+                findNavController().navigate(R.id.action_homeFragment_to_userLogin)
+            }
 
         })
         admin.setOnClickListener(View.OnClickListener { view->

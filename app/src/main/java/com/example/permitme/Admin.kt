@@ -33,10 +33,18 @@ class Admin : AppCompatActivity() {
     }
 }
 
-private fun AppBarLayout.setNavigationOnClickListener(function: () -> Unit) {
-
-}
-
-private fun AppBarLayout.setOnMenuItemClickListener(any: Any) {
-
-}
+//private fun AppBarLayout.setNavigationOnClickListener(function: () -> Unit) {
+//
+//}
+//
+//private fun AppBarLayout.setOnMenuItemClickListener(any: Any) {
+//
+//}
+//
+//private fun AppBarLayout.setNavigationOnClickListener(function: () -> Unit) {
+//
+//}
+//
+//private fun AppBarLayout.setOnMenuItemClickListener(any: Any) {
+//
+//}

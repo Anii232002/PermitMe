@@ -9,4 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#575555</color>
+    <color name="pending_permission">#DFCD30</color>
+    <color name="accepted_permission">#30DF33</color>
+    <color name="rejected_permission">#C5082E</color>
 </resources>

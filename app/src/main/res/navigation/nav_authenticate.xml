@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_homeFragment_to_adminLogin"
             app:destination="@id/adminLogin" />
+        <action
+            android:id="@+id/action_homeFragment_to_admin2"
+            app:destination="@id/admin2" />
+        <action
+            android:id="@+id/action_homeFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/createAdmin"
@@ -44,17 +50,26 @@
         android:label="fragment_user_login"
         tools:layout="@layout/fragment_user_login" >
         <action
-            android:id="@+id/action_userLogin_to_user2"
-            app:destination="@id/user2" />
+            android:id="@+id/action_userLogin_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <activity
         android:id="@+id/admin2"
         android:name="com.example.permitme.Admin"
         android:label="activity_admin"
         tools:layout="@layout/activity_admin" />
-    <activity
-        android:id="@+id/user2"
-        android:name="com.example.permitme.User"
-        android:label="activity_user"
-        tools:layout="@layout/activity_user" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.permitme.Fragment.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_createPermission"
+            app:destination="@id/createPermission" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPermission"
+        android:name="com.example.permitme.ui.permissions.CreatePermission"
+        android:label="fragment_create_permission"
+        tools:layout="@layout/fragment_create_permission" />
 </navigation>

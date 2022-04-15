@@ -35,10 +35,7 @@ class AdminLogin : Fragment() {
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = mAuth.currentUser
-        if(currentUser != null){
-            findNavController().navigate(R.id.action_adminLogin_to_admin2)
-        }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

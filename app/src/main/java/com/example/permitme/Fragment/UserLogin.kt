@@ -37,7 +37,8 @@ class UserLogin : Fragment() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = mAuth.currentUser
         if(currentUser != null){
-            findNavController().navigate(R.id.action_userLogin_to_user2)
+            findNavController().navigate(R.id.action_userLogin_to_userFragment)
+//            startActivity(Intent(this@UserLogin.requireContext(),User::class.java))
         }
     }
 
@@ -63,7 +64,8 @@ class UserLogin : Fragment() {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(ContentValues.TAG, "signInWithEmail:success")
                             val user = mAuth.currentUser
-                            findNavController().navigate(R.id.action_userLogin_to_user2)
+                           findNavController().navigate(R.id.action_userLogin_to_userFragment)
+                                //startActivity(Intent(this@UserLogin.requireContext(),User::class.java))
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(ContentValues.TAG, "signInWithEmail:failure", task.exception)

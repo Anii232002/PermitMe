@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:strokeWidth="4dp"
+    android:layout_marginTop="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_image_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/person"
+            app:civ_border_width="1dp"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@id/user_image_view"
+            android:text="Name of user"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="group"
+            android:layout_toEndOf="@id/user_image_view"
+            android:layout_marginStart="30dp"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_below="@id/user_name"
+            android:layout_marginTop="8dp"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/permission_status"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_pending_24"
+            android:layout_alignTop="@id/user_image_view"
+            />
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
