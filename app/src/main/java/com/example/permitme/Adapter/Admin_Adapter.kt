@@ -1,4 +1,4 @@
-package com.example.permitme
+package com.example.permitme.Adapter
 
 import android.content.Context
 import androidx.fragment.app.Fragment

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.permitme.R
 import com.example.permitme.adapters.ViewPagerAdapter
 import com.example.permitme.databinding.FragmentUserBinding
+
 import com.google.android.material.tabs.TabLayoutMediator
 
 

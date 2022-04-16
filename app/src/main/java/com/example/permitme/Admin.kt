@@ -3,6 +3,7 @@ package com.example.permitme
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
+import com.example.permitme.Adapter.Admin_Adapter
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 
@@ -33,18 +34,10 @@ class Admin : AppCompatActivity() {
     }
 }
 
-//private fun AppBarLayout.setNavigationOnClickListener(function: () -> Unit) {
-//
-//}
-//
-//private fun AppBarLayout.setOnMenuItemClickListener(any: Any) {
-//
-//}
-//
-//private fun AppBarLayout.setNavigationOnClickListener(function: () -> Unit) {
-//
-//}
-//
-//private fun AppBarLayout.setOnMenuItemClickListener(any: Any) {
-//
-//}
+private fun AppBarLayout.setNavigationOnClickListener(function: () -> Unit) {
+
+}
+
+private fun AppBarLayout.setOnMenuItemClickListener(any: Any) {
+
+}

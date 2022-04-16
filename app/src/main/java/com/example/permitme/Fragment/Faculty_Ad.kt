@@ -1,12 +1,15 @@
 package com.example.permitme.Fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.permitme.DataClass.FacultyDataClass
 import com.example.permitme.R
 import com.google.android.material.textfield.TextInputLayout
@@ -17,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 import com.google.firebase.ktx.Firebase
 
-class Faculty_Ad : Fragment() {
+class Faculty_Ad : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
     private lateinit var  query : Query
@@ -27,24 +30,17 @@ class Faculty_Ad : Fragment() {
 
     lateinit var username : TextInputLayout
     lateinit var b: Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_faculty__add, container, false)
-
+        setContentView(R.layout.fragment_faculty__add)
         database = FirebaseDatabase.getInstance()
         mAuth = Firebase.auth
-        emailid = v.findViewById(R.id.email_faculty)
-        pass = v.findViewById(R.id.pass_faculty)
-        b = v.findViewById(R.id.create_faculty)
-        username = v.findViewById(R.id.username_faculty)
+        emailid = findViewById(R.id.email_faculty)
+        pass = findViewById(R.id.pass_faculty)
+        b = findViewById(R.id.create_faculty)
+        username = findViewById(R.id.username_faculty)
         b.setOnClickListener(View.OnClickListener { view->
             val faculty =  FacultyDataClass(
                 username.editText?.text.toString().trim(),
@@ -63,23 +59,24 @@ class Faculty_Ad : Fragment() {
             if (uid != null) {
                 reference.child("faculty").child(uid).setValue(faculty)
             }
-            activity?.let {
+            this?.let {
                 mAuth.createUserWithEmailAndPassword(
                     emailid.editText?.text.toString().trim(),
                     pass.editText?.text.toString().trim()
                 )
-                    .addOnCompleteListener(it) { task ->
+                    .addOnCompleteListener(this) { task ->
                         println("createAdmin" + emailid.editText?.text.toString().trim())
                         if (task.isSuccessful) {
-                            Toast.makeText(context,"Task Successful", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"Task Successful", Toast.LENGTH_LONG).show()
                             val fragment: Fragment = Faculty_Admin()
-                            val fragmentManager = requireActivity().supportFragmentManager
+                            val fragmentManager = this.supportFragmentManager
                             val fragmentTransaction = fragmentManager.beginTransaction()
                             fragmentTransaction.replace(R.id.faculty_add,fragment)
                             fragmentTransaction.addToBackStack(null)
                             fragmentTransaction.commit()
+
                         } else {
-                            Toast.makeText(context,"Task UnSuccessful", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"Task UnSuccessful", Toast.LENGTH_LONG).show()
                         }
                     }
             }
@@ -87,7 +84,6 @@ class Faculty_Ad : Fragment() {
 
 
         })
-        return v;
     }
 
 
