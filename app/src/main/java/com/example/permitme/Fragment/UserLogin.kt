@@ -31,6 +31,7 @@ class UserLogin : Fragment() {
     lateinit var username : TextInputLayout
     private lateinit var mAuth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -100,7 +101,16 @@ class UserLogin : Fragment() {
                                         Log.d(ContentValues.TAG, "signInWithEmail:success")
                                         val user = mAuth.currentUser
                                         Toast.makeText(context,"You are being signed in!",Toast.LENGTH_LONG).show()
-                                        findNavController().navigate(R.id.action_userLogin_to_userFragment)
+                                        //0-> student   1->faculty
+                                        var id = 1
+                                        if(data.child("position").value=="student")
+                                        {
+                                           id = 0
+                                        }
+
+                                        val action = UserLoginDirections.actionUserLoginToUserFragment().setMyArg(id)
+                                        findNavController().navigate(action)
+
 
 
                                     } else {
