@@ -1,11 +1,16 @@
 package com.example.permitme
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.viewpager.widget.ViewPager
 import com.example.permitme.Adapter.Admin_Adapter
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 
 class Admin : AppCompatActivity() {
     lateinit var top_menu : TabLayout
@@ -31,6 +36,26 @@ class Admin : AppCompatActivity() {
             override fun onTabUnselected(tab:TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.signout, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.signout -> {
+
+                FirebaseAuth.getInstance()
+                    .signOut()
+                val i = Intent(this,Home::class.java)
+                startActivity(i)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
 
