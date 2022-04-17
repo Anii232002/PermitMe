@@ -5,18 +5,19 @@ import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.OpenableColumns
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.permitme.DataClass.FacultyDataClass
 import com.example.permitme.DataClass.PermissionDetails
-import com.example.permitme.Fragment.UserFragmentArgs
 import com.example.permitme.databinding.FragmentCreatePermissionBinding
 import com.example.permitme.viewmodels.CreatePermissionViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -27,6 +28,13 @@ import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 
 import java.io.File
+import androidx.core.app.ActivityCompat.startActivityForResult
+import com.bumptech.glide.Glide
+
+
+
+
+
 
 
 class CreatePermission : Fragment() {
@@ -38,7 +46,9 @@ class CreatePermission : Fragment() {
     private lateinit var docs:File
     private lateinit var uri:Uri
     private lateinit var displayName:String
+    private lateinit var imageUri:Uri
     private val PICK_PDF_FILE=1
+    private val PICK_IMAGE=2
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
     private lateinit var fid: String
@@ -79,6 +89,10 @@ class CreatePermission : Fragment() {
 
         binding.lnr1.setOnClickListener {
             selectDocs()
+        }
+
+        binding.profilePhotoImage.setOnClickListener {
+            selectImage()
         }
         reference = database.getReference().child("tsec").child("faculty")
              reference
@@ -128,32 +142,53 @@ class CreatePermission : Fragment() {
 
             val name = binding.nameTextInputEdittext.text.toString()
             val org = binding.orgTextInputEdittext.text.toString()
-            val assignee = binding.assigneeTextInputLayout.editText?.text.toString()
+            val desc=binding.descTextInputEdittext.text.toString()
+            val title=binding.titleTextInputEdittext.text.toString()
 
 
-            val path=viewModel.uploadDocs(displayName,uri)
             val user = FirebaseAuth.getInstance().currentUser
             val uid = user?.uid
-            viewModel.uploadPermissions(name,org,assignee,path)
-            val permission = PermissionDetails(
-                senderemail,hashMap.get(fid),"Permission","","pending",null,path,"This is a doc"
-            )
-            //in place of facultyid place the id of faculty which is chosen in spinner
-
-            reference = database.getReference("tsec").child("permission")
 
 
-            if (uid != null) {
-                reference.push().setValue(permission)
 
-            }
+//           // viewModel.uploadPermissions(name,org,assignee,path)
+//            val permission = PermissionDetails(
+//                senderemail,hashMap.get(fid),name,title,org,"pending",imgPath,path,desc
+//            )
+//            //in place of facultyid place the id of faculty which is chosen in spinner
+//
+//            reference = database.getReference("tsec").child("permission")
+//
+//
+//            if (uid != null) {
+//                reference.push().setValue(permission)
+//
+//            }
+//
+
+            viewModel.uploadImage(fid+"",imageUri)
+            viewModel.uploadDocs(displayName,uri)
+            viewModel.uploadPermissions(senderemail,hashMap.get(fid),name,title,org,desc)
+
+
         }
     }
 
+    private fun selectImage() {
+        val getIntent = Intent(Intent.ACTION_GET_CONTENT)
+        getIntent.type = "image/*"
+
+        val pickIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        pickIntent.type = "image/*"
+
+        val chooserIntent = Intent.createChooser(getIntent, "Select Image")
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(pickIntent))
+
+        startActivityForResult(chooserIntent, PICK_IMAGE)
+    }
 
 
-
-private fun selectDocs() {
+    private fun selectDocs() {
         val intent=Intent()
         intent.setType("application/pdf")
         intent.action=Intent.ACTION_GET_CONTENT
@@ -185,6 +220,32 @@ private fun selectDocs() {
                 displayName = docs.getName()
             }
             binding.uploadTextView.text=displayName
+        }
+
+        else if(requestCode==PICK_IMAGE && resultCode== RESULT_OK && data!=null && data.data!=null){
+            imageUri=data.data!!
+            val uriString=imageUri.toString()
+            docs= File(uriString)
+            displayName = ""
+
+//            if (uriString.startsWith("content://")) {
+//                var cursor: Cursor? = null
+//                try {
+//                    cursor = requireActivity().contentResolver.query(uri, null, null, null, null)
+//                    if (cursor != null && cursor.moveToFirst()) {
+//                        displayName =
+//                            cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+//                    }
+//                } finally {
+//                    cursor!!.close()
+//                }
+//            } else if (uriString.startsWith("file://")) {
+//                displayName = docs.getName()
+//            }
+
+
+            Glide.with(this).load(imageUri).into(binding.profilePhotoImage)
+
         }
     }
 
