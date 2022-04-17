@@ -10,10 +10,10 @@
 
 
     <TextView
-        android:id="@+id/sdHeading"
+        android:id="@+id/sdheading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Describe Your Permission"
+        android:text="Permission Status"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,137 +21,155 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sdname"
+        android:id="@+id/sdnameheading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
+        android:textStyle="bold"
         android:textSize="18sp"
-        android:text="Name"
+        android:text="Name Of Student"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sdHeading" />
-
-    <EditText
-        android:id="@+id/sdNameinput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toEndOf="@+id/sdname"
-        app:layout_constraintTop_toBottomOf="@+id/sdHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/sdheading" />
 
     <TextView
-        android:id="@+id/sdDescribe"
+        android:id="@+id/sdname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
         android:textSize="18sp"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/sdnameheading"
+        app:layout_constraintTop_toBottomOf="@+id/sdheading"
+        />
+
+    <TextView
+        android:id="@+id/sddescheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Description"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sdname" />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
+    <TextView
+        android:id="@+id/sddesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:textSize="18dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toEndOf="@+id/sdDescribe"
-        app:layout_constraintTop_toBottomOf="@+id/sdNameinput" />
+        android:textSize="18sp"
+        android:text="Description"
+        app:layout_constraintStart_toEndOf="@+id/sddescheading"
+        app:layout_constraintTop_toBottomOf="@+id/sdname" />
+
 
     <TextView
-        android:id="@+id/sdClasstextView"
+        android:id="@+id/sdclassheading"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
         android:text="Class"
         android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/sdClassEdittext"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
-
-    <EditText
-        android:id="@+id/sdClassEdittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="48dp"
-
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintTop_toBottomOf="@+id/sddesc"/>
 
     <TextView
-        android:id="@+id/sdFaculy"
+        android:id="@+id/sdclass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Faculty"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sdClasstextView" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Class"
+        android:textSize="18dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.701"
-        app:layout_constraintStart_toEndOf="@+id/sdFaculy"
-        app:layout_constraintTop_toBottomOf="@+id/sdClassEdittext" />
-
-    <Button
-        android:id="@+id/Upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Upload"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sdFaculy" />
-
-    <Button
-        android:id="@+id/sdsave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Save"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Upload" />
-
-    <Button
-        android:id="@+id/sdcancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        android:text="Cancel"
-        app:layout_constraintStart_toEndOf="@+id/sdsave"
-        app:layout_constraintTop_toBottomOf="@+id/Upload" />
+        app:layout_constraintStart_toEndOf="@id/sdclassheading"
+        app:layout_constraintTop_toBottomOf="@+id/sddesc"/>
+
+    <Button
+        android:id="@+id/sdviewdoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Document"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdclass"/>
+
+    <TextView
+        android:id="@+id/sdaddcomment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Comment"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdviewdoc" />
+
+    <TextView
+        android:id="@+id/sdcomment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:text="No Comment yet"
+        app:layout_constraintStart_toEndOf="@+id/sdaddcomment"
+        app:layout_constraintTop_toBottomOf="@+id/sdviewdoc"/>
+
+    <TextView
+        android:id="@+id/sdaccepted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/accepted_permission"
+        android:text="Permission Granted   "
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdcomment"
+        android:layout_marginTop="30dp"
+        app:drawableRightCompat="@drawable/ic_accept" />
+
+    <TextView
+        android:id="@+id/sddenied"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/rejected_permission"
+        android:text="Permission Rejected   "
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdcomment"
+        android:layout_marginTop="30dp"
+        app:drawableRightCompat="@drawable/ic_deny" />
+
+    <TextView
+        android:id="@+id/sdpending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/pending_permission"
+        android:text="Pending Request   "
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdcomment"
+        android:layout_marginTop="30dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

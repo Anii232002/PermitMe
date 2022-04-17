@@ -130,8 +130,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Accept"
+        android:drawableRight="@drawable/ic_accept"
         android:layout_marginLeft="30dp"
-        app:layout_constraintHorizontal_bias="0.272"
+        android:backgroundTint="@color/accepted_permission"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tdcomment" />
 
@@ -140,9 +141,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:text="Deny"
+        android:drawableRight="@drawable/ic_deny"
+        android:backgroundTint="@color/rejected_permission"
         app:layout_constraintStart_toEndOf="@+id/tdaccept"
+        app:layout_constraintTop_toBottomOf="@+id/tdcomment" />
+
+    <Button
+        android:id="@+id/tdpending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Notify"
+        android:backgroundTint="@color/pending_permission"
+        app:layout_constraintStart_toEndOf="@+id/tddeny"
         app:layout_constraintTop_toBottomOf="@+id/tdcomment" />
 
 
