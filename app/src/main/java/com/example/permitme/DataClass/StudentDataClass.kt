@@ -8,7 +8,9 @@ data class StudentDataClass(val username: String? = null,
                        val password: String? = null,
                        val institute:String?=null,
                        val imageUrl:String?=null,
-                       val position:String?=null)  {
+                       val position:String?=null,
+                      val uid:String?=null,
+                      val check:Int?=null)  {
 
 
 }

@@ -100,6 +100,13 @@ class UserLogin : Fragment() {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(ContentValues.TAG, "signInWithEmail:success")
                                         val user = mAuth.currentUser
+//                                        if(data.child("check").value==1)
+//                                        {
+//                                            if (user != null) {
+//                                                reference.child(user.uid).child("uid").setValue(user.uid)
+//
+//                                            }
+//                                        }
                                         Toast.makeText(context,"You are being signed in!",Toast.LENGTH_LONG).show()
                                         //0-> student   1->faculty
                                         var id = 1
@@ -108,7 +115,7 @@ class UserLogin : Fragment() {
                                            id = 0
                                         }
 
-                                        val action = UserLoginDirections.actionUserLoginToUserFragment().setMyArg(id)
+                                        val action = UserLoginDirections.actionUserLoginToUserFragment().setMyArg(id).setEmail(emailid.editText?.text.toString().trim())
                                         findNavController().navigate(action)
 
 

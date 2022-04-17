@@ -50,7 +50,8 @@ class Student_Add : AppCompatActivity() {
                 userid.editText?.text.toString().trim(),
                 pass.editText?.text.toString().trim(),
                 "tsec",
-                null,"student")
+                null,"student",
+            null,1)
             val user = FirebaseAuth.getInstance().currentUser
             val uid = user?.uid
             reference = database.getReference("users")

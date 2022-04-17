@@ -29,43 +29,44 @@ class Home : AppCompatActivity() {
         reference = database.getReference()
         if(currentUser != null){
 
-            reference.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
+//            reference.addListenerForSingleValueEvent(object : ValueEventListener {
+//                override fun onDataChange(dataSnapshot: DataSnapshot) {
+//
+//                    for (data in dataSnapshot.children) {
+//
+//                        if (data.child("users").child(currentUser.uid).exists()) {
+//                            System.out.println("hi "+data.child(currentUser.uid).child("position").getValue())
+//                           if(data.child("users").child(currentUser.uid).child("position").getValue()=="faculty")
+//                           {
+//                               val i = Intent(applicationContext, UserFragment::class.java)
+//                               startActivity(i)
+//
+//                           }
+//                            else if(data.child("users").child(currentUser.uid).child("position").getValue()=="student"){
+//                               val i = Intent(applicationContext,UserFragment::class.java)
+//                               startActivity(i)
+//                           }
+//                            else if(data.child("users").child(currentUser.uid).child("position").getValue()=="admin")
+//                           {
+//                               val i = Intent(applicationContext,Admin::class.java)
+//                               startActivity(i)
+//                           }
+//
+//                        } else {
+//                            //do something if not exists
+//                            Toast.makeText(applicationContext,"No Accounts found with this credentials", Toast.LENGTH_LONG).show()
+//
+//                        }
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                    TODO("Not yet implemented")
+//                }
+//
+//
+//            })
 
-                    for (data in dataSnapshot.children) {
-
-                        if (data.child("users").child(currentUser.uid).exists()) {
-                            System.out.println("hi "+data.child(currentUser.uid).child("position").getValue())
-                           if(data.child("users").child(currentUser.uid).child("position").getValue()=="faculty")
-                           {
-                               val i = Intent(applicationContext, UserFragment::class.java)
-                               startActivity(i)
-
-                           }
-                            else if(data.child("users").child(currentUser.uid).child("position").getValue()=="student"){
-                               val i = Intent(applicationContext,UserFragment::class.java)
-                               startActivity(i)
-                           }
-                            else if(data.child("users").child(currentUser.uid).child("position").getValue()=="admin")
-                           {
-                               val i = Intent(applicationContext,Admin::class.java)
-                               startActivity(i)
-                           }
-
-                        } else {
-                            //do something if not exists
-                            Toast.makeText(applicationContext,"No Accounts found with this credentials", Toast.LENGTH_LONG).show()
-
-                        }
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-
-            })
         }
     }
 }

@@ -19,6 +19,7 @@ class UserFragment : Fragment() {
 
 private lateinit var binding:FragmentUserBinding
 var amount by Delegates.notNull<Int>()
+   var email by Delegates.notNull<String>()
 
     private val args: UserFragmentArgs by navArgs<UserFragmentArgs>()
 
@@ -38,6 +39,7 @@ var amount by Delegates.notNull<Int>()
         val topics= listOf("Accepted","Pending","Rejected")
 
          amount = args.myArg
+        email = args.email.toString()
         val viewPager=binding.viewPager
         val tabLayout=binding.tabLayout
 

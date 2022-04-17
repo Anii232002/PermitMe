@@ -47,7 +47,7 @@ class Faculty_Ad : AppCompatActivity() {
                 emailid.editText?.text.toString().trim(),
                 pass.editText?.text.toString().trim(),
                 "tsec",
-                null,"faculty")
+                null,"faculty",null,1)
             val user = FirebaseAuth.getInstance().currentUser
             val uid = user?.uid
             reference = database.getReference("users")
