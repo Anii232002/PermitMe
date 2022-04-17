@@ -24,13 +24,18 @@
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_user_login.xml" value="0.2" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/PermitMe/app/src/main/res/layout/items_list.xml" value="0.2" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_admin.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_home.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_splash_screen.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/admin_user_item.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_accepted.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_faculty__admin.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_faculty_desc.xml" value="0.264" />
-        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_home.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_rejected.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_student__add.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_student_desc.xml" value="0.264" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/items_list.xml" value="0.20052083333333334" />
       </map>
     </option>
   </component>
