@@ -51,8 +51,18 @@
         tools:layout="@layout/fragment_user_login" >
         <action
             android:id="@+id/action_userLogin_to_userFragment"
-            app:destination="@id/userFragment" />
+            app:destination="@id/userFragment" >
+            <argument
+                android:name="myArg"
+                app:argType="integer"
+                android:defaultValue="1" />
+            <argument
+                android:name="email"
+                app:argType="string"
+                android:defaultValue="H" />
+        </action>
     </fragment>
+
     <activity
         android:id="@+id/admin2"
         android:name="com.example.permitme.Admin"
@@ -63,13 +73,31 @@
         android:name="com.example.permitme.Fragment.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" >
+        <argument
+            android:name="myArg"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="" />
         <action
             android:id="@+id/action_userFragment_to_createPermission"
-            app:destination="@id/createPermission" />
+            app:destination="@id/createPermission">
+            <argument
+                android:name="senderemail"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/createPermission"
         android:name="com.example.permitme.ui.permissions.CreatePermission"
         android:label="fragment_create_permission"
-        tools:layout="@layout/fragment_create_permission" />
+        tools:layout="@layout/fragment_create_permission" >
+        <argument
+            android:name="senderemail"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>

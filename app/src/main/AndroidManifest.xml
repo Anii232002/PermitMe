@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.permitme">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PermitMe">
         <activity
-            android:name=".Home"
-            android:exported="true">
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,17 +23,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".User"
-            android:exported="false" />
+            android:name=".Home"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".Admin"
+            android:exported="false" />
+        <activity
+            android:name=".Fragment.Faculty_Ad"
+            android:exported="false" />
+        <activity
+            android:name=".Fragment.Student_Add"
             android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-
     </application>
 
 </manifest>

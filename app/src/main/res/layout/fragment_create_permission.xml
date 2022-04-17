@@ -127,26 +127,31 @@
                     android:hint="Enter organisation" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/assignee_text_input_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:helperTextEnabled="true"
+                app:helperText="Select Faculty"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/group_text_input_layout"
-                app:startIconDrawable="@drawable/assignee">
+                app:startIconDrawable="@drawable/assignee"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/assignee_text_input_edittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Enter assignee" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <AutoCompleteTextView
+                android:id="@+id/actv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:id="@+id/lnr1"

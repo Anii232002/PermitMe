@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".student_desc"
+    android:paddingTop="45dp">
+
+
+    <TextView
+        android:id="@+id/tdheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description of permission"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tdnameheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Name Of Student"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tdheading" />
+
+    <TextView
+        android:id="@+id/tdname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/tdnameheading"
+        app:layout_constraintTop_toBottomOf="@+id/tdheading"
+        />
+
+    <TextView
+        android:id="@+id/tddescheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tdname" />
+
+    <TextView
+        android:id="@+id/tddesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:text="Description"
+        app:layout_constraintStart_toEndOf="@+id/tddescheading"
+        app:layout_constraintTop_toBottomOf="@+id/tdname" />
+
+
+    <TextView
+        android:id="@+id/tdclassheading"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:text="Class"
+        android:textSize="18dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tddesc"/>
+
+    <TextView
+        android:id="@+id/tdclass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toEndOf="@id/tdclassheading"
+        app:layout_constraintTop_toBottomOf="@+id/tddesc"/>
+
+    <Button
+        android:id="@+id/tdviewdoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Document"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tdclass"/>
+
+    <TextView
+        android:id="@+id/tdaddcomment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Comment"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tdviewdoc" />
+
+    <EditText
+        android:id="@+id/tdcomment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/tdaddcomment"
+        app:layout_constraintTop_toBottomOf="@+id/tdviewdoc"/>
+
+    <Button
+        android:id="@+id/tdaccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Accept"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tdcomment" />
+
+    <Button
+        android:id="@+id/tddeny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:text="Deny"
+        app:layout_constraintStart_toEndOf="@+id/tdaccept"
+        app:layout_constraintTop_toBottomOf="@+id/tdcomment" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+    id("androidx.navigation.safeargs")
+
 
 
 }
@@ -19,7 +21,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    dataBinding{
+        enabled=true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -73,9 +77,11 @@ dependencies {
 //    // Annotation processor
 //    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
 
-
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     def nav_version = "2.3.5"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+
 
 }
