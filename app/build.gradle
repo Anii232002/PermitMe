@@ -40,8 +40,8 @@ android {
 
 dependencies {
 
-    
 
+    implementation 'com.yarolegovich:discrete-scrollview:1.5.1'
 
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
@@ -63,8 +63,7 @@ dependencies {
 
 
 
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-alpha062.5.0-alpha06")
+
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-alpha06")
 

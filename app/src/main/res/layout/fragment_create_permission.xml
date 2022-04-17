@@ -4,8 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:fillViewport="true"
     tools:context=".ui.permissions.CreatePermission">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title_text"
@@ -22,6 +37,9 @@
         app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_photo_image"
         android:layout_width="120dp"
@@ -34,23 +52,14 @@
         app:civ_border_color="@color/gray"
         app:civ_border_width="1dp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/details_card_view"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
 
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
-        app:strokeWidth="2dp"
-        app:cardElevation="10dp"
-        >
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/con1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/profile_photo_image">
 
 
             <!-- TODO: Update blank fragment layout -->
@@ -62,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -77,6 +86,27 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/desc_text_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_text_input_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/desc_text_input_edittext"
+                    android:layout_width="match_parent"
+                    android:inputType="textMultiLine"
+                    android:layout_height="match_parent"
+                    android:hint="Enter description" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/group_text_input_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -87,7 +117,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/name_text_input_layout"
+                app:layout_constraintTop_toBottomOf="@id/desc_text_input_layout"
                 app:startIconDrawable="@drawable/organisation_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -157,7 +187,7 @@
                 android:id="@+id/submit_button"
                 android:layout_width="150dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="submit"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/next_icon"
@@ -171,7 +201,14 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+
+
+
+    </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
 
 
 </RelativeLayout>
