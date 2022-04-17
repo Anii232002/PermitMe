@@ -132,7 +132,7 @@ class UserLogin : Fragment() {
 
                     } else {
                         //do something if not exists
-                        Toast.makeText(context,"No Accounts found with this credentials",Toast.LENGTH_LONG).show()
+//                        Toast.makeText(context,"No Accounts found with this credentials",Toast.LENGTH_LONG).show()
                     }
                 }
             }

@@ -9,14 +9,14 @@ import com.example.permitme.DataClass.PermissionDetails
 import com.example.permitme.R
 import com.google.android.material.textview.MaterialTextView
 
-class PermissionsAdapter(val permissionsList: ArrayList<PermissionDetails?>) : RecyclerView.Adapter<PermissionsAdapter.PermissionsAdapterViewHolder>() {
-private lateinit var mListener: onItemClickListener
+class RejectedAdapter(val permissionsList: MutableList<PermissionDetails>) : RecyclerView.Adapter<RejectedAdapter.PermissionsAdapterViewHolder>() {
+    private lateinit var mListener: onItemClickListener
 
-interface onItemClickListener{
-    fun onItemClick(position:Int)
+    interface onItemClickListener{
+        fun onItemClick(position:Int)
 
 
-}
+    }
     fun setOnItemClickListener(listener: onItemClickListener)
     {
         mListener = listener
@@ -26,13 +26,13 @@ interface onItemClickListener{
     class PermissionsAdapterViewHolder(itemView: View,listener: onItemClickListener):RecyclerView.ViewHolder(itemView){
         val nameTextView=itemView.findViewById<MaterialTextView>(R.id.user_name)
         val orgTextView=itemView.findViewById<MaterialTextView>(R.id.user_group)
-init {
-    itemView.setOnClickListener{
-        listener.onItemClick(adapterPosition)
-    }
-}
+        init {
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
+        }
         fun bind(item:PermissionDetails?){
-           nameTextView.text=item!!.name
+            nameTextView.text=item!!.name
             orgTextView.text=item.org
 
 

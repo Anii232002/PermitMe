@@ -29,7 +29,7 @@ import com.google.firebase.ktx.Firebase
 
 import java.io.File
 import androidx.core.app.ActivityCompat.startActivityForResult
-import com.bumptech.glide.Glide
+
 
 
 
@@ -151,23 +151,23 @@ class CreatePermission : Fragment() {
 
 
 
-//           // viewModel.uploadPermissions(name,org,assignee,path)
-//            val permission = PermissionDetails(
-//                senderemail,hashMap.get(fid),name,title,org,"pending",imgPath,path,desc
-//            )
-//            //in place of facultyid place the id of faculty which is chosen in spinner
-//
-//            reference = database.getReference("tsec").child("permission")
-//
-//
-//            if (uid != null) {
-//                reference.push().setValue(permission)
-//
-//            }
-//
+           // viewModel.uploadPermissions(name,org,assignee,path)
+            val permission = PermissionDetails(
+                senderemail,hashMap.get(fid),name,title,org,"rejected",null,null,desc
+            )
+            //in place of facultyid place the id of faculty which is chosen in spinner
 
-            viewModel.uploadImage(fid+"",imageUri)
-            viewModel.uploadDocs(displayName,uri)
+            reference = database.getReference("tsec").child("permission")
+
+
+            if (uid != null) {
+                reference.push().setValue(permission)
+
+            }
+
+
+//            viewModel.uploadImage(fid+"",imageUri)
+//            viewModel.uploadDocs(displayName,uri)
             viewModel.uploadPermissions(senderemail,hashMap.get(fid),name,title,org,desc)
 
 
@@ -244,7 +244,7 @@ class CreatePermission : Fragment() {
 //            }
 
 
-            Glide.with(this).load(imageUri).into(binding.profilePhotoImage)
+//            Glide.with(this).load(imageUri).into(binding.profilePhotoImage)
 
         }
     }

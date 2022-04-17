@@ -89,6 +89,9 @@
                 app:argType="string"
                 android:defaultValue="" />
         </action>
+        <action
+            android:id="@+id/action_userFragment_to_faculty_desc"
+            app:destination="@id/faculty_desc" />
     </fragment>
     <fragment
         android:id="@+id/createPermission"
@@ -99,5 +102,13 @@
             android:name="senderemail"
             app:argType="string"
             android:defaultValue="" />
+    </fragment>
+    <fragment
+        android:id="@+id/faculty_desc"
+        android:name="com.example.permitme.faculty_desc"
+        android:label="faculty_desc" >
+        <action
+            android:id="@+id/action_faculty_desc_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
 </navigation>

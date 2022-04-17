@@ -2,12 +2,10 @@ package com.example.permitme.ui.main
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.permitme.DataClass.PermissionDetails
@@ -15,7 +13,6 @@ import com.example.permitme.Fragment.UserFragment
 import com.example.permitme.Fragment.UserFragmentDirections
 import com.example.permitme.adapters.PermissionsAdapter
 import com.example.permitme.databinding.FragmentPendingBinding
-import com.example.permitme.viewmodels.DisplayPermissionsViewmodel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -39,46 +36,51 @@ class PendingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
-        // Inflate the layout for this fragment
-        binding=FragmentPendingBinding.inflate(inflater)
-        database = FirebaseDatabase.getInstance();
-//        val currentUser = mAuth.currentUser
-//        if (currentUser != null) {
-//            reference = database.getReference().child("users")
-//
-//        }
-        if((parentFragment as UserFragment).amount==1)
-        {
-            binding.floatingActionButton.hide()
-        }
-
-
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         mDatabase = FirebaseDatabase.getInstance().getReference("tsec/permission")
-
+        binding=FragmentPendingBinding.inflate(inflater)
         val listener=object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (data in snapshot.children){
                     val item=data.getValue(PermissionDetails::class.java)
+                    if((parentFragment as UserFragment).amount==0)
+                    {
+                        if(item?.status.equals("pending")&& item?.studentemail.equals((parentFragment as UserFragment).email))
+                        {
 
-                    _mListOfPermissions.add(item)
+
+                            item?.let { _mListOfPermissions.add(it) }
+                        }
+                    }
+                    else{
+                        if(item?.status.equals("pending")&& item?.facultyemail.equals((parentFragment as UserFragment).email))
+                        {
+                            val item=data.getValue(PermissionDetails::class.java)
+
+                            item?.let { _mListOfPermissions.add(it) }
+                        }
+                    }
+
 
                 }
 
                 binding.pendingPermissionsRv.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-                Log.d("SnapList",_mListOfPermissions.toString())
+//                Log.d("SnapList",_mListOfPermissions.toString())
                 val adapter=PermissionsAdapter(_mListOfPermissions)
                 binding.pendingPermissionsRv.adapter=adapter
+                adapter.setOnItemClickListener(object : PermissionsAdapter.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        if((parentFragment as UserFragment).amount==0)
+                        {
 
+                        }
+                        else
+                        {
+
+                        }
+
+                    }
+
+                })
 
             }
 
@@ -89,6 +91,37 @@ class PendingFragment : Fragment() {
         }
 
         mDatabase.addValueEventListener(listener)
+
+
+        // Inflate the layout for this fragment
+
+//        database = FirebaseDatabase.getInstance();
+//        binding.pendingPermissionsRv.layoutManager=
+//            LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+////        Log.d("SnapList",_mListOfPermissions.toString())
+//        val adapter= PermissionsAdapter((parentFragment as UserFragment).mPending
+//        )
+//        binding.pendingPermissionsRv.adapter=adapter
+
+//        val currentUser = mAuth.currentUser
+//        if (currentUser != null) {
+//            reference = database.getReference().child("users")
+//
+//        }
+        if((parentFragment as UserFragment).amount==1)
+        {
+            binding.floatingActionButton.hide()
+        }
+        return binding.root
+    }
+    private fun onListItemClick(position: Int) {
+//        Toast.makeText(this, mRepos[position].name, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
 
 
 
@@ -105,6 +138,7 @@ class PendingFragment : Fragment() {
             findNavController().navigate(action)
         }
     }
+
 
 
 

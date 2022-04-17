@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
         user.setOnClickListener(View.OnClickListener { view->
 
             if(currentUser != null){
+
                 findNavController().navigate(R.id.action_homeFragment_to_userFragment)
 
             }
