@@ -153,7 +153,7 @@ class CreatePermission : Fragment() {
 
            // viewModel.uploadPermissions(name,org,assignee,path)
             val permission = PermissionDetails(
-                senderemail,hashMap.get(fid),name,title,org,"rejected",null,null,desc
+                senderemail,hashMap.get(fid),name,title,org,"pending",null,null,desc
             )
             //in place of facultyid place the id of faculty which is chosen in spinner
 

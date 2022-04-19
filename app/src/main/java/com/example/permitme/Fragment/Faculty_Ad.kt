@@ -53,11 +53,13 @@ class Faculty_Ad : AppCompatActivity() {
             reference = database.getReference("users")
 
             if (uid != null) {
-                reference.child(uid).setValue(faculty)
+                reference.push().setValue(faculty)
             }
-            reference = database.getReference("tsec")
+
             if (uid != null) {
-                reference.child("faculty").child(uid).setValue(faculty)
+
+                reference = database.getReference("tsec").child("faculty")
+                reference.push().setValue(faculty)
             }
             this?.let {
                 mAuth.createUserWithEmailAndPassword(

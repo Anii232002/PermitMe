@@ -102,7 +102,7 @@
                     android:id="@+id/title_text_input_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Enter name" />
+                    android:hint="Enter Title" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

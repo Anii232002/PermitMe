@@ -67,8 +67,7 @@ private lateinit var database: FirebaseDatabase
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (data in dataSnapshot.children) {
 //                    Log.d("Hello",data.child(emailid.editText?.text.toString().trim()).toString())
-                     if(data.child("email").value == emailid.editText?.text.toString() &&
-                            data.child("password").value == pass.editText?.text.toString()  ) {
+                     if(data.child("email").value == emailid.editText?.text.toString().trim()) {
                         activity?.let {
                             mAuth.signInWithEmailAndPassword(emailid.editText?.text.toString().trim(), pass.editText?.text.toString().trim())
                                 .addOnCompleteListener(it) { task ->
@@ -92,7 +91,7 @@ private lateinit var database: FirebaseDatabase
 
                     } else {
                         //do something if not exists
-                        Toast.makeText(context,"No Accounts found with this credentials",Toast.LENGTH_LONG).show()
+//                        Toast.makeText(context,"No Accounts found with this credentials",Toast.LENGTH_LONG).show()
                     }
                 }
             }

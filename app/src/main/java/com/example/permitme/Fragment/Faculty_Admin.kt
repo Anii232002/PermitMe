@@ -40,7 +40,7 @@ class Faculty_Admin : Fragment() {
         mFirebasedb = FirebaseDatabase.getInstance();
         mFirebaseRef = mFirebasedb.getReference().child("tsec").child("faculty")
         b.setOnClickListener(View.OnClickListener {
-            val i = Intent(activity, Student_Add::class.java)
+            val i = Intent(activity, Faculty_Ad::class.java)
             startActivity(i)
 
         })
