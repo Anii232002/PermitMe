@@ -42,7 +42,12 @@
             app:destination="@id/createAdmin" />
         <action
             android:id="@+id/action_adminLogin_to_admin2"
-            app:destination="@id/admin2" />
+            app:destination="@id/admin2" >
+            <argument
+                android:name="institute"
+                app:argType="string"
+                android:defaultValue="institute" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/userLogin"
@@ -57,9 +62,13 @@
                 app:argType="integer"
                 android:defaultValue="1" />
             <argument
+                android:name="institute"
+                app:argType="string"
+                android:defaultValue="institute" />
+            <argument
                 android:name="email"
                 app:argType="string"
-                android:defaultValue="H" />
+                android:defaultValue="email" />
         </action>
     </fragment>
 
@@ -67,7 +76,12 @@
         android:id="@+id/admin2"
         android:name="com.example.permitme.Admin"
         android:label="activity_admin"
-        tools:layout="@layout/activity_admin" />
+        tools:layout="@layout/activity_admin" >
+        <argument
+            android:name="institute"
+            app:argType="string"
+            android:defaultValue="institute" />
+    </activity>
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.permitme.Fragment.UserFragment"
@@ -80,7 +94,11 @@
         <argument
             android:name="email"
             app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue="email" />
+        <argument
+            android:name="institute"
+            app:argType="string"
+            android:defaultValue="institute" />
         <action
             android:id="@+id/action_userFragment_to_createPermission"
             app:destination="@id/createPermission">

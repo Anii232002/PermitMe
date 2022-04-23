@@ -6,15 +6,21 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.navigation.fragment.navArgs
+import androidx.navigation.navArgs
 import androidx.viewpager.widget.ViewPager
 import com.example.permitme.Adapter.Admin_Adapter
+import com.example.permitme.Fragment.UserFragmentArgs
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.properties.Delegates
 
 class Admin : AppCompatActivity() {
     lateinit var top_menu : TabLayout
     lateinit var viewPager : ViewPager
+    private val args: AdminArgs by navArgs<AdminArgs>()
+    var institute by Delegates.notNull<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +31,7 @@ class Admin : AppCompatActivity() {
         top_menu.addTab(top_menu.newTab().setText("Student"))
         top_menu.addTab(top_menu.newTab().setText("Faculty"))
         top_menu.tabGravity = TabLayout.GRAVITY_FILL
+        institute = args.institute.toString()
         val adapter = Admin_Adapter(this, supportFragmentManager,
             top_menu.tabCount)
         viewPager.adapter = adapter

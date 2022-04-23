@@ -71,7 +71,6 @@ class UserLogin : Fragment() {
             }
             else
             {
-
                 reference = database.getReference().child("tsec").child("student")
             }
         }

@@ -1,5 +1,6 @@
 package com.example.permitme.Fragment
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.permitme.Admin
 import com.example.permitme.DataClass.StudentDataClass
 import com.example.permitme.R
 import com.google.android.gms.tasks.OnCompleteListener
@@ -32,6 +34,7 @@ class Student_Add : AppCompatActivity() {
     lateinit var b: MaterialButton
     private lateinit var mAuth: FirebaseAuth
     lateinit var username : TextInputLayout
+    lateinit var institute : String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,13 +46,14 @@ class Student_Add : AppCompatActivity() {
         pass = findViewById(R.id.pass_student)
         b = findViewById(R.id.create_student)
         username = findViewById(R.id.username_student)
+        institute = intent.getStringExtra("institute").toString()
         database = FirebaseDatabase.getInstance()
         b.setOnClickListener(View.OnClickListener { view->
             val student =  StudentDataClass(
                 username.editText?.text.toString().trim(),
                 userid.editText?.text.toString().trim(),
                 pass.editText?.text.toString().trim(),
-                "tsec",
+                institute,
                 null,"student",
             null,1)
             val user = FirebaseAuth.getInstance().currentUser
@@ -58,7 +62,7 @@ class Student_Add : AppCompatActivity() {
 
             if (uid != null) {
                 reference.push().setValue(student)
-                reference = database.getReference("tsec").child("student")
+                reference = database.getReference(institute).child("student")
                 reference.push().setValue(student)
             }
 
@@ -71,12 +75,9 @@ class Student_Add : AppCompatActivity() {
                         println("createAdmin" + userid.editText?.text.toString().trim())
                         if (task.isSuccessful) {
                             Toast.makeText(this,"Task Successful",Toast.LENGTH_LONG).show()
-                            val fragment: Fragment = Student()
-                            val fragmentManager = this.supportFragmentManager
-                            val fragmentTransaction = fragmentManager.beginTransaction()
-                            fragmentTransaction.replace(R.id.student_add,fragment)
-                            fragmentTransaction.addToBackStack(null)
-                            fragmentTransaction.commit()
+//
+                            val i = Intent(this, Admin::class.java)
+                            startActivity(i)
                         } else {
                             Toast.makeText(this,"Task UnSuccessful",Toast.LENGTH_LONG).show()
                         }

@@ -26,7 +26,7 @@ class RejectedFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var binding: FragmentRejectedBinding
     private lateinit var mDatabase: DatabaseReference
-    private val _mListOfPermissions= ArrayList<PermissionDetails?>()
+    private val _mrejected= ArrayList<PermissionDetails?>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,7 +51,7 @@ class RejectedFragment : Fragment() {
                         {
 
 
-                            item?.let { _mListOfPermissions.add(it) }
+                            item?.let { _mrejected.add(it) }
                         }
                     }
                     else{
@@ -59,7 +59,7 @@ class RejectedFragment : Fragment() {
                         {
                             val item=data.getValue(PermissionDetails::class.java)
 
-                            item?.let { _mListOfPermissions.add(it) }
+                            item?.let { _mrejected.add(it) }
                         }
                     }
 
@@ -68,7 +68,7 @@ class RejectedFragment : Fragment() {
 
                 binding.rejectedPermissionsRv.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
 //                Log.d("SnapList",_mListOfPermissions.toString())
-                val adapter=PermissionsAdapter(_mListOfPermissions)
+                val adapter=PermissionsAdapter(_mrejected)
                 binding.rejectedPermissionsRv.adapter=adapter
                 adapter.setOnItemClickListener(object : PermissionsAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {

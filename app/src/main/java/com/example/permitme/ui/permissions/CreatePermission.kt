@@ -103,6 +103,7 @@ class CreatePermission : Fragment() {
                         val user = snapshot.getValue(
                             FacultyDataClass::class.java
                         )
+
                         if (user != null) {
                             user.username?.let { it1 -> list.add(it1) }
                         }

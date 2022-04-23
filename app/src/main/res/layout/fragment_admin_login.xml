@@ -53,18 +53,28 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/instituteadmin_login"
-            android:layout_marginTop="30dp"
+            android:id="@+id/insttuteadmin_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_margin="20dp"
-            android:hint="Institute name">
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:helperTextEnabled="true"
+            app:helperText="Select Faculty"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/group_text_input_layout"
+            app:startIconDrawable="@drawable/assignee"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
+                android:id="@+id/actv1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="none"
                 />
+
         </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:layout_marginTop="20dp"

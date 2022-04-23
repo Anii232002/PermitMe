@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.permitme.Adapter.FacultyAdapter
 import com.example.permitme.Adapter.StudentAdapter
+import com.example.permitme.Admin
 import com.example.permitme.DataClass.FacultyDataClass
 import com.example.permitme.DataClass.StudentDataClass
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -38,9 +39,9 @@ class Faculty_Admin : Fragment() {
         b = v.findViewById(com.example.permitme.R.id.faculty_add1)
         mMessageListView = v.findViewById(com.example.permitme.R.id.faculty_rv)
         mFirebasedb = FirebaseDatabase.getInstance();
-        mFirebaseRef = mFirebasedb.getReference().child("tsec").child("faculty")
+        mFirebaseRef = mFirebasedb.getReference().child((activity as Admin).institute).child("faculty")
         b.setOnClickListener(View.OnClickListener {
-            val i = Intent(activity, Faculty_Ad::class.java)
+            val i = Intent(activity, Faculty_Ad::class.java).putExtra("institute",(activity as Admin).institute)
             startActivity(i)
 
         })

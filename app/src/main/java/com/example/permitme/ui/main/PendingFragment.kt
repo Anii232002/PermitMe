@@ -36,7 +36,7 @@ class PendingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mDatabase = FirebaseDatabase.getInstance().getReference("tsec/permission")
+        mDatabase = FirebaseDatabase.getInstance().getReference("tsec").child("permission")
         binding=FragmentPendingBinding.inflate(inflater)
         val listener=object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
