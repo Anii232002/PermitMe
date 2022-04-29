@@ -4,36 +4,34 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.permitme.DataClass.PermissionDetails
 import com.example.permitme.R
 import com.google.android.material.textview.MaterialTextView
 
-class PermissionsAdapter(val permissionsList: ArrayList<PermissionDetails?>) : RecyclerView.Adapter<PermissionsAdapter.PermissionsAdapterViewHolder>() {
-private lateinit var mListener: onItemClickListener
+class PermissionsAdapter(val permissionsList: ArrayList<PermissionDetails?>,val listener: onItemClickListener) : RecyclerView.Adapter<PermissionsAdapter.PermissionsAdapterViewHolder>() {
+
 
 interface onItemClickListener{
     fun onItemClick(position:Int)
 
 
 }
-    fun setOnItemClickListener(listener: onItemClickListener)
-    {
-        mListener = listener
-    }
 
 
-    class PermissionsAdapterViewHolder(itemView: View,listener: onItemClickListener):RecyclerView.ViewHolder(itemView){
+    class PermissionsAdapterViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val nameTextView=itemView.findViewById<MaterialTextView>(R.id.user_name)
         val orgTextView=itemView.findViewById<MaterialTextView>(R.id.user_group)
-init {
-    itemView.setOnClickListener{
-        listener.onItemClick(adapterPosition)
-    }
-}
+        val iconImageView=itemView.findViewById<ImageView>(R.id.user_image_view)
+
         fun bind(item:PermissionDetails?){
            nameTextView.text=item!!.name
             orgTextView.text=item.org
+            if (!item.icon.isNullOrEmpty())
+            Glide.with(itemView.context).load(item.icon).into(iconImageView)
 
 
         }
@@ -45,13 +43,19 @@ init {
     ): PermissionsAdapterViewHolder {
         val view=LayoutInflater.from(parent.context).inflate(R.layout.items_list,parent,false)
 
-        return PermissionsAdapterViewHolder(view,mListener)
+        return PermissionsAdapterViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: PermissionsAdapterViewHolder, position: Int) {
         val item=permissionsList[position]
 
         Log.d("single",item.toString())
+
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(position)
+        }
+
+
 
         holder.bind(item)
 

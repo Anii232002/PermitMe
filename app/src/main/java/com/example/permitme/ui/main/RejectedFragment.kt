@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class RejectedFragment : Fragment() {
+class RejectedFragment : Fragment(), PermissionsAdapter.onItemClickListener {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
@@ -39,6 +39,11 @@ class RejectedFragment : Fragment() {
         // Inflate the layout for this fragment
         binding= FragmentRejectedBinding.inflate(inflater)
         mDatabase = FirebaseDatabase.getInstance().getReference("tsec/permission")
+
+        binding.rejectedPermissionsRv.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+//                Log.d("SnapList",_mListOfPermissions.toString())
+        val adapter=PermissionsAdapter(_mrejected,this@RejectedFragment)
+        binding.rejectedPermissionsRv.adapter=adapter
 
         val listener=object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -66,24 +71,7 @@ class RejectedFragment : Fragment() {
 
                 }
 
-                binding.rejectedPermissionsRv.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-//                Log.d("SnapList",_mListOfPermissions.toString())
-                val adapter=PermissionsAdapter(_mrejected)
-                binding.rejectedPermissionsRv.adapter=adapter
-                adapter.setOnItemClickListener(object : PermissionsAdapter.onItemClickListener{
-                    override fun onItemClick(position: Int) {
-                        if((parentFragment as UserFragment).amount==0)
-                        {
 
-                        }
-                        else
-                        {
-
-                        }
-
-                    }
-
-                })
 
             }
 
@@ -95,6 +83,10 @@ class RejectedFragment : Fragment() {
 
         mDatabase.addValueEventListener(listener)
         return binding.root
+
+    }
+
+    override fun onItemClick(position: Int) {
 
     }
 

@@ -1,13 +1,16 @@
 package com.example.permitme.Fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.permitme.DataClass.PermissionDetails
+import com.example.permitme.DataClass.UserDetailsDataStore
 import com.example.permitme.Home
 import com.example.permitme.R
 import com.example.permitme.adapters.PermissionsAdapter
@@ -17,7 +20,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import io.grpc.NameResolver
+import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
+import android.content.SharedPreferences
+
+
+
 
 
 class UserFragment : Fragment() {
@@ -31,6 +39,7 @@ var amount by Delegates.notNull<Int>()
     var mPending :MutableList<PermissionDetails> = mutableListOf<PermissionDetails>()
     var mAccepted:MutableList<PermissionDetails> = mutableListOf<PermissionDetails>()
      var mRejected:MutableList<PermissionDetails> = mutableListOf<PermissionDetails>()
+    private lateinit var userDetailsDataStore: UserDetailsDataStore
 
     private val args: UserFragmentArgs by navArgs<UserFragmentArgs>()
 
@@ -51,6 +60,17 @@ var amount by Delegates.notNull<Int>()
 
          amount = args.myArg
         email = args.email.toString()
+
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("user_email", email)
+        editor.apply()
+
+        email= sharedPref.getString("user_email","").toString()
+
+
+
+
         val viewPager=binding.viewPager
         val tabLayout=binding.tabLayout
 
@@ -119,6 +139,8 @@ var amount by Delegates.notNull<Int>()
         inflater.inflate(R.menu.signout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {

@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class AcceptedFragment : Fragment() {
+class AcceptedFragment : Fragment(), PermissionsAdapter.onItemClickListener {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
@@ -39,7 +39,12 @@ class AcceptedFragment : Fragment() {
         binding= FragmentAcceptedBinding.inflate(inflater)
         mDatabase = FirebaseDatabase.getInstance().getReference("tsec").child("permission")
 
-        val listener=object : ValueEventListener {
+        binding.acceptedPermissionsRv.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+//                Log.d("SnapList",_mListOfPermissions.toString())
+        val adapter=PermissionsAdapter(_maccepted,this@AcceptedFragment)
+        binding.acceptedPermissionsRv.adapter=adapter
+
+        val listener=object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (data in snapshot.children){
 
@@ -64,24 +69,8 @@ class AcceptedFragment : Fragment() {
 
                 }
 
-                binding.acceptedPermissionsRv.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-//                Log.d("SnapList",_mListOfPermissions.toString())
-                val adapter=PermissionsAdapter(_maccepted)
-                binding.acceptedPermissionsRv.adapter=adapter
-                adapter.setOnItemClickListener(object : PermissionsAdapter.onItemClickListener{
-                    override fun onItemClick(position: Int) {
-                        if((parentFragment as UserFragment).amount==0)
-                        {
 
-                        }
-                        else
-                        {
 
-                        }
-
-                    }
-
-                })
 
             }
 
@@ -89,11 +78,16 @@ class AcceptedFragment : Fragment() {
                 Log.w("error", "loadPost:onCancelled", error.toException())
             }
 
+
         }
 
         mDatabase.addValueEventListener(listener)
 
         return binding.root
+    }
+
+    override fun onItemClick(position: Int) {
+
     }
 
 

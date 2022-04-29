@@ -29,12 +29,10 @@ import com.google.firebase.ktx.Firebase
 
 import java.io.File
 import androidx.core.app.ActivityCompat.startActivityForResult
-
-
-
-
-
-
+import androidx.core.net.toUri
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.example.permitme.R
 
 
 class CreatePermission : Fragment() {
@@ -44,9 +42,9 @@ class CreatePermission : Fragment() {
     private lateinit var currentUser:FirebaseUser
     private val viewModel:CreatePermissionViewModel by viewModels()
     private lateinit var docs:File
-    private lateinit var uri:Uri
-    private lateinit var displayName:String
-    private lateinit var imageUri:Uri
+    private var uri:String=""
+    private var displayName:String=""
+    private var imageUri:String=""
     private val PICK_PDF_FILE=1
     private val PICK_IMAGE=2
     private lateinit var database: FirebaseDatabase
@@ -148,28 +146,16 @@ class CreatePermission : Fragment() {
 
 
             val user = FirebaseAuth.getInstance().currentUser
-            val uid = user?.uid
 
 
 
-           // viewModel.uploadPermissions(name,org,assignee,path)
-            val permission = PermissionDetails(
-                senderemail,hashMap.get(fid),name,title,org,"pending",null,null,desc
-            )
-            //in place of facultyid place the id of faculty which is chosen in spinner
-
-            reference = database.getReference("tsec").child("permission")
 
 
-            if (uid != null) {
-                reference.push().setValue(permission)
+            viewModel.uploadPermissions(user!!.email.toString(),hashMap.get(fid),name,title,org,desc)
+            viewModel.uploadImage(name+"",imageUri)
+            viewModel.uploadDocs(displayName,uri)
 
-            }
-
-
-//            viewModel.uploadImage(fid+"",imageUri)
-//            viewModel.uploadDocs(displayName,uri)
-            viewModel.uploadPermissions(senderemail,hashMap.get(fid),name,title,org,desc)
+            findNavController().navigate(R.id.action_createPermission_to_userFragment)
 
 
         }
@@ -200,7 +186,7 @@ class CreatePermission : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode==PICK_PDF_FILE && resultCode==RESULT_OK && data!=null && data.data!=null){
-             uri= data.data!!
+             uri= data.data.toString()
             val uriString: String = uri.toString()
              docs= File(uriString)
             val path: String = docs.getAbsolutePath()
@@ -209,7 +195,7 @@ class CreatePermission : Fragment() {
             if (uriString.startsWith("content://")) {
                 var cursor: Cursor? = null
                 try {
-                    cursor = requireActivity().contentResolver.query(uri, null, null, null, null)
+                    cursor = requireActivity().contentResolver.query(uri.toUri(), null, null, null, null)
                     if (cursor != null && cursor.moveToFirst()) {
                         displayName =
                             cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
@@ -224,7 +210,7 @@ class CreatePermission : Fragment() {
         }
 
         else if(requestCode==PICK_IMAGE && resultCode== RESULT_OK && data!=null && data.data!=null){
-            imageUri=data.data!!
+            imageUri=data.data.toString()
             val uriString=imageUri.toString()
             docs= File(uriString)
             displayName = ""
@@ -245,7 +231,7 @@ class CreatePermission : Fragment() {
 //            }
 
 
-//            Glide.with(this).load(imageUri).into(binding.profilePhotoImage)
+            Glide.with(this).load(imageUri).into(binding.profilePhotoImage)
 
         }
     }

@@ -21,7 +21,8 @@
             app:destination="@id/admin2" />
         <action
             android:id="@+id/action_homeFragment_to_userFragment"
-            app:destination="@id/userFragment" />
+            app:destination="@id/userFragment"
+           />
     </fragment>
     <fragment
         android:id="@+id/createAdmin"
@@ -86,7 +87,8 @@
         android:id="@+id/userFragment"
         android:name="com.example.permitme.Fragment.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
+        tools:layout="@layout/fragment_user"
+        >
         <argument
             android:name="myArg"
             app:argType="integer"
@@ -101,7 +103,8 @@
             android:defaultValue="institute" />
         <action
             android:id="@+id/action_userFragment_to_createPermission"
-            app:destination="@id/createPermission">
+            app:destination="@id/createPermission"
+            >
             <argument
                 android:name="senderemail"
                 app:argType="string"
@@ -115,11 +118,17 @@
         android:id="@+id/createPermission"
         android:name="com.example.permitme.ui.permissions.CreatePermission"
         android:label="fragment_create_permission"
-        tools:layout="@layout/fragment_create_permission" >
+        tools:layout="@layout/fragment_create_permission"
+        >
         <argument
             android:name="senderemail"
             app:argType="string"
             android:defaultValue="" />
+        <action
+            android:id="@+id/action_createPermission_to_userFragment"
+            app:destination="@id/userFragment"
+            app:popUpTo="@id/createPermission"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/faculty_desc"

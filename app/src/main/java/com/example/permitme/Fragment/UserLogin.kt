@@ -1,6 +1,7 @@
 package com.example.permitme.Fragment
 
 import android.content.ContentValues
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,15 +10,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.permitme.DataClass.UserDetailsDataStore
 import com.example.permitme.R
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.FirebaseError
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
 
 class UserLogin : Fragment() {
@@ -30,6 +33,7 @@ class UserLogin : Fragment() {
     lateinit var switcher: SwitchMaterial
     lateinit var username : TextInputLayout
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var userDetailsDataStore:UserDetailsDataStore
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +59,7 @@ class UserLogin : Fragment() {
         login = view.findViewById(R.id.loginuser)
         emailid = view.findViewById(R.id.emailuser_login)
         pass = view.findViewById(R.id.passuser_login)
+        userDetailsDataStore= UserDetailsDataStore(requireContext())
 
         mAuth = Firebase.auth
         switcher = view.findViewById(R.id.switcher)
@@ -112,7 +117,20 @@ class UserLogin : Fragment() {
                                         if(data.child("position").value=="student")
                                         {
                                            id = 0
+
                                         }
+
+                                        val sharedPref = requireActivity().getSharedPreferences("user_email_pref",
+                                            Context.MODE_PRIVATE)
+                                        val editor = sharedPref.edit()
+                                        editor.putString("user_email", emailid.editText?.text.toString())
+                                        editor.putInt("user_value",id)
+                                        editor.apply()
+
+//                                        lifecycleScope.launch {
+//                                            userDetailsDataStore.writeEmail(emailid.editText?.text.toString(),requireContext())
+//                                            userDetailsDataStore.writeAmount(id,requireContext())
+//                                        }
 
                                         val action = UserLoginDirections.actionUserLoginToUserFragment().setMyArg(id).setEmail(emailid.editText?.text.toString().trim())
                                         findNavController().navigate(action)

@@ -2,6 +2,7 @@ package com.example.permitme.viewmodels
 
 import android.net.Uri
 import android.util.Log
+import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +16,10 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import java.io.File
 import java.io.FileInputStream
+import android.R.id
+
+
+
 
 class CreatePermissionViewModel : ViewModel() {
 
@@ -29,15 +34,20 @@ class CreatePermissionViewModel : ViewModel() {
     private lateinit var reference: DatabaseReference
     private lateinit var database: FirebaseDatabase
 
+    var id=""
+
 
      fun uploadPermissions(senderemail:String,fid:String?,name:String,title:String,org:String,desc:String){
          val user = FirebaseAuth.getInstance().currentUser
          val uid = user?.uid
 
          database = FirebaseDatabase.getInstance();
-         reference = database.getReference().child("tsec").child("faculty")
+        // reference = database.getReference().child("tsec").child("faculty")
 
          // viewModel.uploadPermissions(name,org,assignee,path)
+
+         Log.d("imgPathBeforeUpload",imgPath)
+
          val permission = PermissionDetails(
              senderemail,fid,name,title,org,"pending",imgPath,docPath,desc
          )
@@ -47,15 +57,20 @@ class CreatePermissionViewModel : ViewModel() {
 
 
          if (uid != null) {
-             reference.push().setValue(permission)
+             val key=reference.push()
+             key.setValue(permission)
+             id=key.key.toString()
+
 
          }
     }
 
-    fun uploadDocs(docName:String,doc: Uri){
+    fun uploadDocs(docName:String,doc: String){
         val pdfRef=storageRefs.child("PDFs/"+docName)
 
-        val uploadTask=pdfRef.putFile(doc)
+        val uri= doc.toUri()
+
+        val uploadTask=pdfRef.putFile(uri)
 
 
 
@@ -63,6 +78,11 @@ class CreatePermissionViewModel : ViewModel() {
             Log.d("SuccessUpload","uploaded successfully")
            pdfRef.downloadUrl.addOnSuccessListener {
                docPath=it.toString()
+
+               val values: HashMap<String, Any> = HashMap()
+               values["doc_url"] =docPath
+
+               reference.child(id).updateChildren(values)
            }
 
 
@@ -71,45 +91,53 @@ class CreatePermissionViewModel : ViewModel() {
                 Log.d(TAG,"Upload failed,"+it)
             }
 
-//            .addOnProgressListener {
-//                progress.value= (100*it.bytesTransferred)/it.totalByteCount
-//            }
-
-
-        pdfRef.downloadUrl.addOnSuccessListener {
-            Log.d("Dowmload",it.toString())
-            docPath=it.toString()
-        }
 //
-//        val task=uploadTask.continueWithTask{task->
-//            if (!task.isSuccessful){
-//                task.exception?.let {
-//                    throw it
-//                }
-//            }
-//            pdfRef.downloadUrl
-//        }.addOnCompleteListener {
-//            task->
-//            if (task.isSuccessful){
-//                path=task.result.toString()
-//            }
-//        }
 
     }
 
-    fun uploadImage(imgName:String,imgUri:Uri){
+    fun uploadImage(imgName:String,imgUri:String){
         val imgRef=storageRefs.child("Images/"+imgName)
-
-        val uploadTask=imgRef.putFile(imgUri)
+        val uri= imgUri.toUri()
+        val uploadTask=imgRef.putFile(uri)
 
 
         uploadTask.addOnSuccessListener {
             Log.d("Done","Image uploaded")
-        }
 
-        imgRef.downloadUrl.addOnSuccessListener {
-            imgPath=it.toString()
-        }
+            imgRef.downloadUrl.addOnSuccessListener {
+                imgPath=it.toString()
+                Log.d("icon",imgPath)
+
+                val values: HashMap<String, Any> = HashMap()
+                values["icon"] = imgPath
+
+                reference.child(id).updateChildren(values)
+            }
+
+
+         }
+
+//        val task=uploadTask.continueWithTask {
+//            if (!it.isSuccessful){
+//                it.exception?.let {
+//                    throw it
+//                }
+//            }
+//
+//            imgRef.downloadUrl
+//
+//        }.addOnCompleteListener {
+//            if (it.isSuccessful){
+//                imgPath=it.result.toString()
+//            }
+//        }
+
+
+
+
+
+
+
 
 
     }
