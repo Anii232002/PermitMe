@@ -8,6 +8,13 @@
     tools:context=".ui.main.PendingFragment">
 
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/pending_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        >
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pending_permissions_rv"
         android:layout_width="match_parent"
@@ -16,6 +23,8 @@
         android:layout_marginTop="60dp"
         tools:listitem="@layout/items_list"
         />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"

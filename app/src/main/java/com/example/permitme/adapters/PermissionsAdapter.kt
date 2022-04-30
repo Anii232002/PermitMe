@@ -26,12 +26,20 @@ interface onItemClickListener{
         val nameTextView=itemView.findViewById<MaterialTextView>(R.id.user_name)
         val orgTextView=itemView.findViewById<MaterialTextView>(R.id.user_group)
         val iconImageView=itemView.findViewById<ImageView>(R.id.user_image_view)
+        val permissionIcon=itemView.findViewById<ImageView>(R.id.permission_status)
 
         fun bind(item:PermissionDetails?){
            nameTextView.text=item!!.name
             orgTextView.text=item.org
             if (!item.icon.isNullOrEmpty())
             Glide.with(itemView.context).load(item.icon).into(iconImageView)
+
+            if (item.status.equals("accepted")){
+                permissionIcon.setImageResource(R.drawable.accepted)
+            }
+            else if(item.status.equals("rejected")){
+                permissionIcon.setImageResource(R.drawable.rejected)
+            }
 
 
         }

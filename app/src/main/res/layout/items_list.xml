@@ -45,10 +45,9 @@
             android:id="@+id/permission_status"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_baseline_pending_24"
             android:layout_alignTop="@id/user_image_view"
-            />
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_pending_24" />
 
 
 

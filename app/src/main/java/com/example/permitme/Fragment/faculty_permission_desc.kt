@@ -51,14 +51,14 @@ class faculty_permission_desc : AppCompatActivity() {
         accept.setOnClickListener(View.OnClickListener { view ->
 
             database = FirebaseDatabase.getInstance().getReference("tsec")
-            database.child("permission").child(id.toString()).child("status").setValue("accept")
+            database.child("permission").child(id.toString()).child("status").setValue("accepted")
             Toast.makeText(this,"Permission Accepted",Toast.LENGTH_SHORT).show()
         })
 
         deny.setOnClickListener(View.OnClickListener { view ->
 
             database = FirebaseDatabase.getInstance().getReference("tsec")
-            database.child("permission").child(id.toString()).child("status").setValue("deny")
+            database.child("permission").child(id.toString()).child("status").setValue("rejected")
             Toast.makeText(this,"Permission denied",Toast.LENGTH_SHORT).show()
         })
 

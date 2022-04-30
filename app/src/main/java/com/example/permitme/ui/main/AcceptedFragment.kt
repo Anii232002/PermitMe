@@ -77,7 +77,7 @@ class AcceptedFragment : Fragment(), PermissionsAdapter.onItemClickListener {
 
                     if (amount == 0) {
 
-                        if (item?.status.equals("pending") && item?.studentemail.equals(email)) {
+                        if (item?.status.equals("accepted") && item?.studentemail.equals(email)) {
 
                             map.put(i.toString(), data.key.toString())
                             _maccepted.add(item)
@@ -87,7 +87,7 @@ class AcceptedFragment : Fragment(), PermissionsAdapter.onItemClickListener {
 
                         }
                     } else {
-                        if (item?.status.equals("pending") && item?.facultyemail.equals(email)) {
+                        if (item?.status.equals("accepted") && item?.facultyemail.equals(email)) {
 
                             val item = data.getValue(PermissionDetails::class.java)
                             map.put(i.toString(), data.key.toString())

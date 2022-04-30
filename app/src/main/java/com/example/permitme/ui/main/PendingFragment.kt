@@ -39,6 +39,7 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
     private lateinit var mDatabase: DatabaseReference
     private val _mListOfPermissions= ArrayList<PermissionDetails?>()
     private lateinit var userDetailsDataStore: UserDetailsDataStore
+    private lateinit var adapter: PermissionsAdapter
     private var email="empty"
     val map:HashMap<String,String> = HashMap()
     var amount =0
@@ -59,10 +60,18 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
         mDatabase = FirebaseDatabase.getInstance().getReference("tsec").child("permission")
         binding=FragmentPendingBinding.inflate(inflater)
         binding.pendingPermissionsRv.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+
+        binding.pendingSwipeRefresh.setOnRefreshListener {
+            _mListOfPermissions.clear()
+            updateDetails()
+            binding.pendingSwipeRefresh.isRefreshing=false
+        }
 //                Log.d("SnapList",_mListOfPermissions.toString())
-        val adapter= PermissionsAdapter(_mListOfPermissions,this)
+        adapter= PermissionsAdapter(_mListOfPermissions,this)
         binding.pendingPermissionsRv.adapter=adapter
         _mListOfPermissions.clear()
+
+        updateDetails()
 
 
 
@@ -80,53 +89,6 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
 
         Log.d("AmountEmail", "$amount $email")
 
-        mDatabase.addValueEventListener(object : ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                    var i=0
-                for (data in snapshot.children){
-                    val item=data.getValue(PermissionDetails::class.java)
-
-                    //Log.d("itemInsideDataChange",item.toString())
-
-                    Log.d("Email",email+" "+item?.studentemail.equals(email).toString())
-
-                    if(amount==0)
-                    {
-
-                        if(item?.status.equals("pending") && item?.studentemail.equals(email))
-                        {
-
-                            map.put(i.toString(),data.key.toString())
-                           _mListOfPermissions.add(item)
-                            adapter.notifyDataSetChanged()
-                            i++;
-
-
-                        }
-                    }
-                    else{
-                        if(item?.status.equals("pending")&& item?.facultyemail.equals(email))
-                        {
-
-                           val item=data.getValue(PermissionDetails::class.java)
-                            map.put(i.toString(),data.key.toString())
-                             _mListOfPermissions.add(item)
-                            adapter.notifyDataSetChanged()
-                            i++                        }
-                    }
-
-
-                }
-
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w("error", "loadPost:onCancelled", error.toException())
-            }
-
-        })
 
 
 
@@ -154,6 +116,57 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
     }
     private fun onListItemClick(position: Int) {
 //        Toast.makeText(this, mRepos[position].name, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun updateDetails(){
+        mDatabase.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var i=0
+                for (data in snapshot.children){
+                    val item=data.getValue(PermissionDetails::class.java)
+
+                    //Log.d("itemInsideDataChange",item.toString())
+
+                    Log.d("Email",email+" "+item?.studentemail.equals(email).toString())
+
+                    if(amount==0)
+                    {
+
+                        if(item?.status.equals("pending") && item?.studentemail.equals(email))
+                        {
+
+                            map.put(i.toString(),data.key.toString())
+                            _mListOfPermissions.add(item)
+                            adapter.notifyDataSetChanged()
+                            i++;
+
+
+                        }
+                    }
+                    else{
+                        if(item?.status.equals("pending")&& item?.facultyemail.equals(email))
+                        {
+
+                            val item=data.getValue(PermissionDetails::class.java)
+                            map.put(i.toString(),data.key.toString())
+                            _mListOfPermissions.add(item)
+                            adapter.notifyDataSetChanged()
+                            i++                        }
+                    }
+
+
+                }
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("error", "loadPost:onCancelled", error.toException())
+            }
+
+        })
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -195,6 +208,7 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
                 intent.putExtra("desc",_mListOfPermissions[position]?.description.toString())
                 intent.putExtra("status",_mListOfPermissions[position]?.status.toString())
                 intent.putExtra("org",_mListOfPermissions[position]?.org.toString())
+                intent.putExtra("doc_url",_mListOfPermissions[position]?.doc_url.toString())
 
                 startActivity(intent)
 

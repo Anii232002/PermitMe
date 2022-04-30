@@ -8,13 +8,22 @@
     tools:context=".ui.main.AcceptedFragment">
 
 
+
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/accepted_permissions_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
+        android:layout_marginTop="60dp"
         tools:listitem="@layout/items_list"
         />
+
+
+
+
 
 
 </RelativeLayout>
