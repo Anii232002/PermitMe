@@ -107,7 +107,7 @@
         android:id="@+id/sdaddcomment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Comment"
+        android:text="Comments: "
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
@@ -117,7 +117,7 @@
 
     <TextView
         android:id="@+id/sdcomment"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"

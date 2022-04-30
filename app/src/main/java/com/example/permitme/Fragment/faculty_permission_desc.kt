@@ -1,10 +1,16 @@
 package com.example.permitme.Fragment
 
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.permitme.R
@@ -35,6 +41,11 @@ class faculty_permission_desc : AppCompatActivity() {
         val name : TextView = findViewById(R.id.tdname)
         val desc : TextView = findViewById(R.id.tddesc)
         val org : TextView = findViewById(R.id.tdclass)
+        val button:Button=findViewById(R.id.tdviewdoc)
+
+        val commentBox:EditText=findViewById(R.id.tdcomment)
+
+
 
 
 
@@ -42,9 +53,24 @@ class faculty_permission_desc : AppCompatActivity() {
         name.text = intent.getStringExtra("name")
         desc.text = intent.getStringExtra("desc")
         org.text = intent.getStringExtra("org")
+
+        val doc_url=intent.getStringExtra("doc_url")
         //binding.tdtitle.text = intent.getStringExtra("title")
 
         val id = intent.getStringExtra("id")
+
+        button.setOnClickListener {
+
+            Log.d("DownloadUrl",doc_url.toString())
+            if (!doc_url.isNullOrEmpty()){
+                Toast.makeText(this,"Download started",Toast.LENGTH_SHORT)
+                download(doc_url, Environment.DIRECTORY_DOWNLOADS)
+            }
+            else{
+                Toast.makeText(this,"No document found",Toast.LENGTH_SHORT)
+            }
+
+        }
 
 
 
@@ -63,9 +89,13 @@ class faculty_permission_desc : AppCompatActivity() {
         })
 
         notify.setOnClickListener(View.OnClickListener { view ->
+            val comment=commentBox.text.toString()
 
             database = FirebaseDatabase.getInstance().getReference("tsec")
             database.child("permission").child(id.toString()).child("status").setValue("pending")
+            if (!comment.isEmpty()){
+                database.child("permission").child(id.toString()).child("comments").setValue(comment)
+            }
             Toast.makeText(this,"Permission pending",Toast.LENGTH_SHORT).show()
         })
 
@@ -86,6 +116,20 @@ class faculty_permission_desc : AppCompatActivity() {
 //            database.child("permission").child(id.toString()).child("status").setValue("pending")
 //            Toast.makeText(this,"Permission Notified",Toast.LENGTH_SHORT).show()
 //        })
+
+    }
+
+    private fun download(url:String,destinationDirectory:String){
+        val download=getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+
+        val uri= Uri.parse(url)
+
+        val request= DownloadManager.Request(uri)
+
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+        request.setDestinationInExternalFilesDir(this,destinationDirectory,"pdf"+System.currentTimeMillis()+".pdf")
+
+        download.enqueue(request)
 
     }
 }

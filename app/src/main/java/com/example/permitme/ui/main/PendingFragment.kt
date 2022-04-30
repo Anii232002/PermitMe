@@ -209,6 +209,7 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
                 intent.putExtra("status",_mListOfPermissions[position]?.status.toString())
                 intent.putExtra("org",_mListOfPermissions[position]?.org.toString())
                 intent.putExtra("doc_url",_mListOfPermissions[position]?.doc_url.toString())
+                intent.putExtra("comments",_mListOfPermissions[position]?.comments.toString())
 
                 startActivity(intent)
 
@@ -230,6 +231,7 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
                 intent.putExtra("desc",_mListOfPermissions[position]?.description.toString())
                 intent.putExtra("status",_mListOfPermissions[position]?.status.toString())
                 intent.putExtra("org",_mListOfPermissions[position]?.org.toString())
+                intent.putExtra("doc_url",_mListOfPermissions[position]?.doc_url.toString())
                 intent.putExtra("id",id)
 
                 startActivity(intent)

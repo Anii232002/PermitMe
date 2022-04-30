@@ -43,6 +43,7 @@ class student_permission_dec : AppCompatActivity() {
         binding.sddesc.text = intent.getStringExtra("desc")
         binding.sdclass.text = intent.getStringExtra("org")
         binding.sdtitle.text = intent.getStringExtra("title")
+        binding.sdcomment.text=intent.getStringExtra("comments")
         val doc_url=intent.getStringExtra("doc_url")
 
 
