@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.student_permission_dec"
+    android:paddingTop="45dp">
+
+
+    <TextView
+        android:id="@+id/sdheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Permission Status"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sdnameheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Name Of Student"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdheading" />
+
+    <TextView
+        android:id="@+id/sdname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/sdnameheading"
+        app:layout_constraintTop_toBottomOf="@+id/sdheading"
+        />
+
+    <TextView
+        android:id="@+id/sdtitleheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdname" />
+
+    <TextView
+        android:id="@+id/sdtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:text="title"
+        app:layout_constraintStart_toEndOf="@+id/sdtitleheading"
+        app:layout_constraintTop_toBottomOf="@+id/sdname" />
+
+    <TextView
+        android:id="@+id/sddescheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdtitleheading" />
+
+    <TextView
+        android:id="@+id/sddesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:text="Description"
+        app:layout_constraintStart_toEndOf="@+id/sddescheading"
+        app:layout_constraintTop_toBottomOf="@+id/sdtitle" />
+
+
+    <TextView
+        android:id="@+id/sdclassheading"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:text="Class"
+        android:textSize="18dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sddesc"/>
+
+    <TextView
+        android:id="@+id/sdclass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toEndOf="@id/sdclassheading"
+        app:layout_constraintTop_toBottomOf="@+id/sddesc"/>
+
+    <Button
+        android:id="@+id/sdviewdoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Document"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdclass"/>
+
+    <TextView
+        android:id="@+id/sdaddcomment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Comment"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdviewdoc" />
+
+    <TextView
+        android:id="@+id/sdcomment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:text="No Comment yet"
+        app:layout_constraintStart_toEndOf="@+id/sdaddcomment"
+        app:layout_constraintTop_toBottomOf="@+id/sdviewdoc"/>
+
+    <TextView
+        android:id="@+id/sdaccepted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/accepted_permission"
+        android:text="Permission Granted   "
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdcomment"
+        android:layout_marginTop="30dp"
+        app:drawableRightCompat="@drawable/ic_accept" />
+
+    <TextView
+        android:id="@+id/sddenied"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/rejected_permission"
+        android:text="Permission Rejected   "
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdcomment"
+        android:layout_marginTop="30dp"
+        app:drawableRightCompat="@drawable/ic_deny" />
+
+    <TextView
+        android:id="@+id/sdpending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/pending_permission"
+        android:text="Pending Request   "
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdcomment"
+        android:layout_marginTop="30dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,12 @@ import android.content.SharedPreferences
 
 import android.R.string.no
 import android.content.Context
+import android.content.Intent
+import android.widget.Toast
+import com.example.permitme.DataClass.parceble
+import com.example.permitme.Fragment.faculty_permission_desc
+import com.example.permitme.Fragment.student_permission_dec
+import kotlinx.coroutines.Dispatchers.Main
 
 
 class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
@@ -35,6 +41,8 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
     private lateinit var userDetailsDataStore: UserDetailsDataStore
     private var email="empty"
     val map:HashMap<String,String> = HashMap()
+    var amount =0
+
 
 
 
@@ -56,7 +64,7 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
         binding.pendingPermissionsRv.adapter=adapter
         _mListOfPermissions.clear()
 
-        var amount=0
+
 
 
 //        userDetailsDataStore.preferencesAmountValue.asLiveData().observe(viewLifecycleOwner){
@@ -93,6 +101,7 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
                            _mListOfPermissions.add(item)
                             adapter.notifyDataSetChanged()
                             i++;
+
 
                         }
                     }
@@ -169,7 +178,49 @@ class PendingFragment : Fragment(), PermissionsAdapter.onItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        val id=map.get(position.toString())
+        val id= map[position.toString()]
+        Log.d("Entered student","Hello there")
+        if(amount == 0) {
+
+                val intent = Intent(requireActivity(), student_permission_dec::class.java)
+                val per = parceble(_mListOfPermissions[position]?.name.toString(),
+                                    _mListOfPermissions[position]?.title.toString(),
+                                     _mListOfPermissions[position]?.org.toString(),
+                                    _mListOfPermissions[position]?.status.toString(),
+                                    _mListOfPermissions[position]?.doc_url.toString(),
+                                    _mListOfPermissions[position]?.description.toString(),
+                                    id)
+                intent.putExtra("name",_mListOfPermissions[position]?.name.toString())
+                intent.putExtra("title",_mListOfPermissions[position]?.title.toString())
+                intent.putExtra("desc",_mListOfPermissions[position]?.description.toString())
+                intent.putExtra("status",_mListOfPermissions[position]?.status.toString())
+                intent.putExtra("org",_mListOfPermissions[position]?.org.toString())
+
+                startActivity(intent)
+
+
+        }
+        else{
+
+                val intent = Intent(requireContext(), faculty_permission_desc::class.java)
+                val per = parceble(_mListOfPermissions[position]?.name.toString(),
+                    _mListOfPermissions[position]?.title.toString(),
+                    _mListOfPermissions[position]?.org.toString(),
+                    _mListOfPermissions[position]?.status.toString(),
+                    _mListOfPermissions[position]?.doc_url.toString(),
+                    _mListOfPermissions[position]?.description.toString(),
+                    id)
+            //Toast.makeText(context, "Hello" + _mListOfPermissions[position]?.name.toString(), Toast.LENGTH_SHORT).show()
+                intent.putExtra("name",_mListOfPermissions[position]?.name.toString())
+                intent.putExtra("title",_mListOfPermissions[position]?.title.toString())
+                intent.putExtra("desc",_mListOfPermissions[position]?.description.toString())
+                intent.putExtra("status",_mListOfPermissions[position]?.status.toString())
+                intent.putExtra("org",_mListOfPermissions[position]?.org.toString())
+                intent.putExtra("id",id)
+
+                startActivity(intent)
+
+        }
 
         Log.d("realtimeId",id.toString())
     }

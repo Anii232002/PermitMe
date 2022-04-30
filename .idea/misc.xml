@@ -24,9 +24,14 @@
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_user_login.xml" value="0.2" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/PermitMe/app/src/main/res/layout/items_list.xml" value="0.2" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/drawable/assignee.xml" value="0.178" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/drawable/ic_baseline_pending_24.xml" value="0.178" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/drawable/ic_deny.xml" value="0.178" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_admin.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_faculty_permission_desc.xml" value="0.16885964912280702" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_splash_screen.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/activity_student_permission_dec.xml" value="0.16885964912280702" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/admin_user_item.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_accepted.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_admin_login.xml" value="0.2" />
@@ -35,7 +40,7 @@
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_faculty__ad.xml" value="0.16885964912280702" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_faculty__add.xml" value="0.16885964912280702" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_faculty__admin.xml" value="0.16" />
-        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_faculty_desc.xml" value="0.16885964912280702" />
+        <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_faculty_desc.xml" value="0.2" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_pending.xml" value="0.16885964912280702" />
         <entry key="..\:/Users/Umang Singh/AndroidStudioProjects/PermitMe/app/src/main/res/layout/fragment_rejected.xml" value="0.20052083333333334" />

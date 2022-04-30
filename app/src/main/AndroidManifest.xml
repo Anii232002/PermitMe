@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PermitMe">
         <activity
+            android:name=".Fragment.faculty_permission_desc"
+            android:exported="false" />
+        <activity
+            android:name=".Fragment.student_permission_dec"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/SplashScreenTheme">
@@ -24,9 +30,7 @@
         </activity>
         <activity
             android:name=".Home"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Admin"
             android:exported="false" />
